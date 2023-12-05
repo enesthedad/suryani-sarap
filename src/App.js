@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Body from "./components/Body";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
-function App() {
+const App = () => {
+  const [activePage, setActivePage] = useState(1);
+
+  const [isMenuVisible, setMenuVisibility] = useState(true);
+  console.log(isMenuVisible);
+  const HandleMenuToggle = () => {};
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Header
+        isMenuVisible={isMenuVisible}
+        setMenuVisibility={setMenuVisibility}
+        setActivePage={setActivePage}
+      />
+
+      {isMenuVisible ? null : <div className='blacker'></div>}
+      <Body activePage={activePage} />
+      <Footer />
     </div>
   );
-}
+};
 
 export default App;

@@ -1,4 +1,4 @@
-import storePic from "../../../images/omursarap.jpeg";
+import storePic from "../../../images/omursarap.jpg";
 import Image from "../Image";
 const OrderImg = () => {
   return (

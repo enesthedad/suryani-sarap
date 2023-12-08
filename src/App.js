@@ -1,9 +1,9 @@
 import { useState, useEffect, lazy, Suspense } from "react";
 import Loading from "./components/pages/Loading";
-import Footer from "./components/Footer.jsx";
-import Header from "./components/Header.jsx";
-
 const Body = lazy(() => import("./components/Body.jsx"));
+const Footer = lazy(() => import("./components/Footer.jsx"));
+const Header = lazy(() => import("./components/Header.jsx"));
+
 const App = () => {
   const [activePage, setActivePage] = useState(1);
 
@@ -11,8 +11,8 @@ const App = () => {
 
   return (
     <>
-      <div className='App'>
-        <Suspense fallback={<Loading />}>
+      <Suspense fallback={<Loading />}>
+        <div className='App'>
           <Header
             isMenuVisible={isMenuVisible}
             setMenuVisibility={setMenuVisibility}
@@ -21,10 +21,10 @@ const App = () => {
 
           {isMenuVisible ? null : <div className='blacker'></div>}
           <Body activePage={activePage} />
-          <Loading />
+
           <Footer />
-        </Suspense>
-      </div>
+        </div>
+      </Suspense>
     </>
   );
 };

@@ -1,4 +1,4 @@
-import loadingGIF from "../../images/ezgif.com-gif-maker.gif";
+import loadingGIF from "../../images/loading-animation.gif";
 const Loading = () => {
   return (
     <div className='loading'>

@@ -1,4 +1,6 @@
-import Wine from "./Wine";
+import { lazy } from "react";
+
+const Wine = lazy(() => import("./Wine"));
 
 const Products = () => {
   const wines = [
@@ -17,7 +19,7 @@ const Products = () => {
     <div className='menu-container'>
       <div className='menu'>
         {wines.map((wine, index) => (
-          <Wine key={wine.id} color={wine.color} definition={wine.winename} />
+          <Wine key={index + 1} color={wine.color} definition={wine.winename} />
         ))}
       </div>
     </div>

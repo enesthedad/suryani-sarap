@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense } from "react";
+import { lazy, Suspense } from "react";
 import Loading from "./pages/Loading";
 
 const AssyrianWine = lazy(() => import("./pages/AssyrianWine/AssyrianWine"));
@@ -15,53 +15,51 @@ const Body = ({ activePage }) => {
   return (
     <>
       <body>
-        <Suspense fallback={<Loading />}>
-          {activePage === 1 && (
-            <div>
-              <HomePage />
-              <div className='menu-container'>
-                <h3 className='menu-header'>URUNLERIMIZ</h3>
-                <Products />
-              </div>
-              <LastNews />
+        {activePage === 1 && (
+          <div>
+            <HomePage />
+            <div className='menu-container'>
+              <h3 className='menu-header'>URUNLERIMIZ</h3>
+              <Products />
             </div>
-          )}
-          {activePage === 2 && (
-            <div>
-              <OurWines />
-            </div>
-          )}
-          {activePage === 3 && (
-            <div>
-              <AssyrianWine />
-            </div>
-          )}
-          {activePage === 4 && (
-            <div>
-              <Blog />
-            </div>
-          )}
-          {activePage === 5 && (
-            <div>
-              <Assyrians />
-            </div>
-          )}
-          {activePage === 6 && (
-            <div>
-              <Midyat />
-            </div>
-          )}
-          {activePage === 7 && (
-            <div>
-              <Prizes />
-            </div>
-          )}
-          {activePage === 8 && (
-            <div>
-              <Order />
-            </div>
-          )}
-        </Suspense>
+            <LastNews />
+          </div>
+        )}
+        {activePage === 2 && (
+          <div>
+            <OurWines />
+          </div>
+        )}
+        {activePage === 3 && (
+          <div>
+            <AssyrianWine />
+          </div>
+        )}
+        {activePage === 4 && (
+          <div>
+            <Blog />
+          </div>
+        )}
+        {activePage === 5 && (
+          <div>
+            <Assyrians />
+          </div>
+        )}
+        {activePage === 6 && (
+          <div>
+            <Midyat />
+          </div>
+        )}
+        {activePage === 7 && (
+          <div>
+            <Prizes />
+          </div>
+        )}
+        {activePage === 8 && (
+          <div>
+            <Order />
+          </div>
+        )}
       </body>
     </>
   );

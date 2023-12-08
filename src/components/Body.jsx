@@ -14,7 +14,7 @@ const Order = lazy(() => import("./pages/Order/Order"));
 const Body = ({ activePage }) => {
   return (
     <>
-      <body>
+      <div className='body-container'>
         {activePage === 1 && (
           <div>
             <HomePage />
@@ -60,7 +60,7 @@ const Body = ({ activePage }) => {
             <Order />
           </div>
         )}
-      </body>
+      </div>
     </>
   );
 };

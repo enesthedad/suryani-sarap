@@ -96,6 +96,15 @@ code {
   width: 100%;
   justify-content: space-between;
 }
+#navbar-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100vh;
+  z-index: 3;
+}
 .ad-container {
   width: 33%;
   /* #6C90A0 */
@@ -184,6 +193,7 @@ code {
 }
 header {
   height: 15vh;
+  overflow: hidden;
 }
 .news {
   display: flex;

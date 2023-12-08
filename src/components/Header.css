@@ -39,12 +39,20 @@ h1 {
   color: #f8f8ff;
   text-decoration: none;
 }
+
+.closing-left {
+  width: 70%;
+  height: 100vh;
+  background-color: #212022;
+  opacity: 0.1;
+}
 .navbar {
   background-color: #212022;
   min-height: 100vh;
   gap: 2rem;
   padding: 5rem;
   padding-top: 0px;
+  width: auto;
   top: 0;
   right: 0;
   position: absolute;

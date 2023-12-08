@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Headerstyle from "./Header.css";
+import "./Header.css";
 // ICONS
 import menuIcon from "../images/icons/menu.png";
 import closeIcon from "../images/icons/close.png";
@@ -29,13 +29,7 @@ import instagramIcon from "../images/icons/social/instagram.png";
 import twitterIcon from "../images/icons/social/twitter.png";
 import Loading from "./pages/Loading";
 
-const Header = ({
-  loading,
-  isMenuVisible,
-  setMenuVisibility,
-  setActivePage,
-  triggerLoading,
-}) => {
+const Header = ({ isMenuHidden, setMenuVisibility, setActivePage }) => {
   const links = [
     {
       id: 1,
@@ -97,7 +91,7 @@ const Header = ({
   const [navlinks, setLinks] = useState([...links]);
 
   const handleMenuToggle = () => {
-    isMenuVisible ? setMenuVisibility(false) : setMenuVisibility(true);
+    isMenuHidden ? setMenuVisibility(false) : setMenuVisibility(true);
   };
   const handleClick = (id) => {
     setLinks(
@@ -130,60 +124,63 @@ const Header = ({
 
         <div className='links'>
           <div>
-            {isMenuVisible ? (
+            {isMenuHidden ? (
               <a href='#'>
                 <img onClick={handleMenuToggle} src={menuIcon} alt='' />
               </a>
             ) : (
-              <div className='navbar'>
-                <a className='closer' onClick={handleMenuToggle} href='#'>
-                  <img src={closeIcon} alt='' />
-                </a>
-                {navlinks.map((link, index) => (
-                  <a
-                    onClick={() => {
-                      handleClick(link.id);
-                      setActivePage(link.id);
-                      handleMenuToggle();
-                    }}
-                    key={link.id}
-                    id={link.id}
-                    className={link.isActive ? "active" : ""}
-                  >
-                    <img
-                      className='mini-icon'
-                      src={link.isActive ? link.activeLink : link.link}
-                      alt={link.link}
-                    />
-                    {link.description}
+              <div id='navbar-container'>
+                <div onClick={handleMenuToggle} className='closing-left'></div>
+                <div className='navbar'>
+                  <a className='closer' onClick={handleMenuToggle} href='#'>
+                    <img src={closeIcon} alt='' />
                   </a>
-                ))}
-                <div className='social-links'>
-                  <a
-                    href='https://www.facebook.com/omursuryanisarapevi'
-                    target='_blank'
-                  >
-                    <img src={facebookIcon} alt='' />
-                  </a>
-                  <a
-                    href='https://www.instagram.com/omursuryanisarapevi/'
-                    target='_blank'
-                  >
-                    <img src={instagramIcon} alt='' />
-                  </a>
-                  <a target='_blank' href='https://twitter.com/suryanisarap'>
-                    <img src={twitterIcon} alt='' />
-                  </a>
-                </div>
-                <div className='order-now'>
-                  <a
-                    href='https://api.whatsapp.com/send/?phone=905373972468&text&type=phone_number&app_absent=0'
-                    target='_blank'
-                    className='order-now-btn'
-                  >
-                    <img src={whatsappIcon} alt='whatsapp-icon' />
-                    SIPARIS VER
-                  </a>
+                  {navlinks.map((link, index) => (
+                    <a
+                      onClick={() => {
+                        handleClick(link.id);
+                        setActivePage(link.id);
+                        handleMenuToggle();
+                      }}
+                      key={link.id}
+                      id={link.id}
+                      className={link.isActive ? "active" : ""}
+                    >
+                      <img
+                        className='mini-icon'
+                        src={link.isActive ? link.activeLink : link.link}
+                        alt={link.link}
+                      />
+                      {link.description}
+                    </a>
+                  ))}
+                  <div className='social-links'>
+                    <a
+                      href='https://www.facebook.com/omursuryanisarapevi'
+                      target='_blank'
+                    >
+                      <img src={facebookIcon} alt='' />
+                    </a>
+                    <a
+                      href='https://www.instagram.com/omursuryanisarapevi/'
+                      target='_blank'
+                    >
+                      <img src={instagramIcon} alt='' />
+                    </a>
+                    <a target='_blank' href='https://twitter.com/suryanisarap'>
+                      <img src={twitterIcon} alt='' />
+                    </a>
+                  </div>
+                  <div className='order-now'>
+                    <a
+                      href='https://api.whatsapp.com/send/?phone=905373972468&text&type=phone_number&app_absent=0'
+                      target='_blank'
+                      className='order-now-btn'
+                    >
+                      <img src={whatsappIcon} alt='whatsapp-icon' />
+                      SIPARIS VER
+                    </a>
+                  </div>
                 </div>
               </div>
             )}

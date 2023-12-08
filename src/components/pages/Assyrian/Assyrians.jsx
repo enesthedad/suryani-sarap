@@ -1,12 +1,10 @@
-import assyrianPic from "../../../images/Assyrians.jpg";
+import { lazy } from "react";
 
+const AssyrianImg = lazy(() => import("./AssyrianImg"));
 const Assyrians = () => {
   return (
     <div className='product-container'>
-      <div className='product-header'>
-        <img src={assyrianPic} alt='' />
-        <h5 className='product-header-title'>SURYANILER</h5>
-      </div>
+      <AssyrianImg />
       <div className='blog-text'>
         <h5>Suryaniler kimdir?</h5>
         <p>

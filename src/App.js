@@ -7,19 +7,26 @@ const Header = lazy(() => import("./components/Header.jsx"));
 const App = () => {
   const [activePage, setActivePage] = useState(1);
 
-  const [isMenuVisible, setMenuVisibility] = useState(true);
-
+  const [isMenuHidden, setMenuVisibility] = useState(true);
+  isMenuHidden
+    ? (document.body.style.overflow = "hidden")
+    : (document.body.style.overflow = "scroll");
   return (
     <>
       <Suspense fallback={<Loading />}>
-        <div className='App'>
+        <div
+          style={
+            isMenuHidden ? { overflowX: "hidden", overflow: "hidden" } : null
+          }
+          className='App'
+        >
           <Header
-            isMenuVisible={isMenuVisible}
+            isMenuHidden={isMenuHidden}
             setMenuVisibility={setMenuVisibility}
             setActivePage={setActivePage}
           />
 
-          {isMenuVisible ? null : <div className='blacker'></div>}
+          {isMenuHidden ? null : <div className='blacker'></div>}
           <Body activePage={activePage} />
 
           <Footer />

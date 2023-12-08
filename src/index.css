@@ -319,6 +319,18 @@ footer a {
 #map {
   height: 20rem;
 }
+.loading {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.loading img {
+  width: 50%;
+  height: auto;
+}
 @media only screen and (max-width: 1200px) {
   .info {
     flex-direction: column;
@@ -366,6 +378,9 @@ footer a {
   }
   .landing {
     height: 50vh;
+  }
+  header {
+    height: 10vh;
   }
 }
 @media only screen and (max-width: 600px) {

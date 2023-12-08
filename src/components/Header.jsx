@@ -27,8 +27,15 @@ import activehomeHeartIcon from "../images/icons/active/stay-at-home.png";
 import facebookIcon from "../images/icons/social/facebook.png";
 import instagramIcon from "../images/icons/social/instagram.png";
 import twitterIcon from "../images/icons/social/twitter.png";
+import Loading from "./pages/Loading";
 
-const Header = ({ isMenuVisible, setMenuVisibility, setActivePage }) => {
+const Header = ({
+  loading,
+  isMenuVisible,
+  setMenuVisibility,
+  setActivePage,
+  triggerLoading,
+}) => {
   const links = [
     {
       id: 1,
@@ -93,87 +100,97 @@ const Header = ({ isMenuVisible, setMenuVisibility, setActivePage }) => {
     isMenuVisible ? setMenuVisibility(false) : setMenuVisibility(true);
   };
   const handleClick = (id) => {
-    links.forEach((link) => {
-      if (link.id === id) {
-        link.isActive = true;
-      } else {
-        link.isActive = false;
-      }
-    });
-    setLinks(links);
-    console.log(navlinks);
+    setLinks(
+      links.map((link) =>
+        link.id === id
+          ? { ...link, isActive: true }
+          : { ...link, isActive: false }
+      )
+    );
   };
   return (
-    <header>
-      <div>
-        <a
-          onClick={() => {
-            setActivePage(1);
-            handleClick(1);
-          }}
-          className='logo'
-        >
-          <img src={wineIcon} alt='wine-glass' />
-          <h1 className='header-name-container'>
-            <div>OMUR</div>
-            <div>SURYANI</div>
-            <div>SARAP EVI</div>
-          </h1>
-        </a>
-      </div>
-
-      <div className='links'>
+    <>
+      <header>
         <div>
-          {isMenuVisible ? (
-            <a href='#'>
-              <img onClick={handleMenuToggle} src={menuIcon} alt='' />
-            </a>
-          ) : (
-            <div className='navbar'>
-              <a className='closer' onClick={handleMenuToggle} href='#'>
-                <img src={closeIcon} alt='' />
-              </a>
-              {navlinks.map((link, index) => (
-                <a
-                  onClick={() => {
-                    handleClick(link.id);
-                    setActivePage(link.id);
-                    handleMenuToggle();
-                  }}
-                  key={link.id}
-                  id={link.id}
-                  className={link.isActive ? "active" : ""}
-                >
-                  <img
-                    className='mini-icon'
-                    src={link.isActive ? link.activeLink : link.link}
-                    alt={link.link}
-                  />
-                  {link.description}
-                </a>
-              ))}
-              <div className='social-links'>
-                <a href='#'>
-                  <img src={facebookIcon} alt='' />
-                </a>
-                <a href='#'>
-                  <img src={instagramIcon} alt='' />
-                </a>
-                <a href='#'>
-                  <img src={twitterIcon} alt='' />
-                </a>
-              </div>
-              <div className='order-now'>
-                <button className='order-now-btn'>
-                  <img src={whatsappIcon} alt='whatsapp-icon' />
-                  SIPARIS VER
-                </button>
-              </div>
-            </div>
-          )}
+          <a
+            onClick={() => {
+              setActivePage(1);
+              handleClick(1);
+            }}
+            className='logo'
+          >
+            <img src={wineIcon} alt='wine-glass' />
+            <h1 className='header-name-container'>
+              <div>OMUR</div>
+              <div>SURYANI</div>
+              <div>SARAP EVI</div>
+            </h1>
+          </a>
         </div>
-      </div>
-    </header>
+
+        <div className='links'>
+          <div>
+            {isMenuVisible ? (
+              <a href='#'>
+                <img onClick={handleMenuToggle} src={menuIcon} alt='' />
+              </a>
+            ) : (
+              <div className='navbar'>
+                <a className='closer' onClick={handleMenuToggle} href='#'>
+                  <img src={closeIcon} alt='' />
+                </a>
+                {navlinks.map((link, index) => (
+                  <a
+                    onClick={() => {
+                      handleClick(link.id);
+                      setActivePage(link.id);
+                      handleMenuToggle();
+                    }}
+                    key={link.id}
+                    id={link.id}
+                    className={link.isActive ? "active" : ""}
+                  >
+                    <img
+                      className='mini-icon'
+                      src={link.isActive ? link.activeLink : link.link}
+                      alt={link.link}
+                    />
+                    {link.description}
+                  </a>
+                ))}
+                <div className='social-links'>
+                  <a
+                    href='https://www.facebook.com/omursuryanisarapevi'
+                    target='_blank'
+                  >
+                    <img src={facebookIcon} alt='' />
+                  </a>
+                  <a
+                    href='https://www.instagram.com/omursuryanisarapevi/'
+                    target='_blank'
+                  >
+                    <img src={instagramIcon} alt='' />
+                  </a>
+                  <a target='_blank' href='https://twitter.com/suryanisarap'>
+                    <img src={twitterIcon} alt='' />
+                  </a>
+                </div>
+                <div className='order-now'>
+                  <a
+                    href='https://api.whatsapp.com/send/?phone=905373972468&text&type=phone_number&app_absent=0'
+                    target='_blank'
+                    className='order-now-btn'
+                  >
+                    <img src={whatsappIcon} alt='whatsapp-icon' />
+                    SIPARIS VER
+                  </a>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </header>
+    </>
   );
 };
 

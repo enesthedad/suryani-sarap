@@ -6,29 +6,18 @@ const HomePage = () => {
   return (
     <main>
       <div className='first-section'>
-        <img className='landing' src={landingPhoto} alt='' />
-        <div className='mini-container'>
-          <div className='ad-container'>
-            <img src={approve} alt='' />
-            <div>
-              <h4>Suryani Sarabi</h4>
-              <p>Dogal Suryani Saraplari</p>
-            </div>
-          </div>
-          <div className='dark-ad-container'>
-            <img src={approveLight} alt='' />
-            <div>
-              <h4>Kaliteli urunler</h4>
-              <p>Dogal Suryani Saraplari</p>
-            </div>
-          </div>
-          <div className='ad-container'>
-            <img src={approve} alt='' />
-            <div>
-              <h4>Mutlu Musteri</h4>
-              <p>Musteri Odakli Hizmet Anlayisi</p>
-            </div>
-          </div>
+        <div className='first-section-bg'></div>
+        <div className='first-section-text'>
+          <h2>Bir Damla Keyif, Bir Şişe Mutluluk</h2>
+          <p>
+            Ömür Süryani Şarap Evi, geleneksel Suryani sarapları ile benzersiz
+            bir lezzet yolculuğuna davet ediyor. Binlerce yıllık kökleri ve
+            zengin mirasıyla Suryani şarapları, size özel bir tat deneyimi
+            sunuyor. En seçkin üzümlerle üretilen şaraplarımız, tarih ve
+            lezzetin mükemmel bir buluşmasıdır. Ömür Süryani Şarap Evi ile
+            Suryani şarap kültürünü keşfedin ve damak zevkinizi ödüllendirin.
+            Şimdi birinci sınıf Suryani saraplarıyla tanışmak için adım atın!
+          </p>
         </div>
       </div>
     </main>

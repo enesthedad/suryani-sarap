@@ -1,11 +1,11 @@
 import product from "../images/icons/product.png";
-const Wine = (props) => {
+const Wine = ({ wine, handleWineClick }) => {
   return (
-    <div className='wine'>
-      <div style={{ backgroundColor: props.color }} className='wine-img'>
+    <div onClick={() => handleWineClick(wine.id)} className='wine'>
+      <div style={{ backgroundColor: wine.color }} className='wine-img'>
         <img className='product-img' src={product} alt='' />
       </div>
-      <p className='wine-name'>{props.definition}</p>
+      <p className='wine-name'>{wine.wineName}</p>
     </div>
   );
 };

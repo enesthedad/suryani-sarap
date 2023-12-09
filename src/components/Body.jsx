@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
-import Loading from "./pages/Loading";
+import Comments from "./pages/Comments/Comments";
+import WhyWe from "./pages/WhyWe";
 
 const AssyrianWine = lazy(() => import("./pages/AssyrianWine/AssyrianWine"));
 const Blog = lazy(() => import("./pages/Blog/Blog"));
@@ -11,23 +12,23 @@ const Assyrians = lazy(() => import("./pages/Assyrian/Assyrians"));
 const Midyat = lazy(() => import("./pages/Midyat/Midyat"));
 const Prizes = lazy(() => import("./pages/Prizes/Prizes"));
 const Order = lazy(() => import("./pages/Order/Order"));
-const Body = ({ activePage }) => {
+const Body = ({ activePage, wineVisible, handleWineClick }) => {
   return (
     <>
       <div className='body-container'>
         {activePage === 1 && (
           <div>
             <HomePage />
-            <div className='menu-container'>
-              <h3 className='menu-header'>URUNLERIMIZ</h3>
-              <Products />
-            </div>
-            <LastNews />
+            <WhyWe />
+            <Comments />
           </div>
         )}
         {activePage === 2 && (
           <div>
-            <OurWines />
+            <OurWines
+              wineVisible={wineVisible}
+              handleWineClick={handleWineClick}
+            />
           </div>
         )}
         {activePage === 3 && (

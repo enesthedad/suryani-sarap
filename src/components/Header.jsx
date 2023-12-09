@@ -29,7 +29,7 @@ import instagramIcon from "../images/icons/social/instagram.png";
 import twitterIcon from "../images/icons/social/twitter.png";
 import Loading from "./pages/Loading";
 
-const Header = ({ isMenuHidden, setMenuVisibility, setActivePage }) => {
+const Header = ({ isMenuHidden, handleMenuClick, setActivePage }) => {
   const links = [
     {
       id: 1,
@@ -90,9 +90,6 @@ const Header = ({ isMenuHidden, setMenuVisibility, setActivePage }) => {
   ];
   const [navlinks, setLinks] = useState([...links]);
 
-  const handleMenuToggle = () => {
-    isMenuHidden ? setMenuVisibility(false) : setMenuVisibility(true);
-  };
   const handleClick = (id) => {
     setLinks(
       links.map((link) =>
@@ -114,11 +111,7 @@ const Header = ({ isMenuHidden, setMenuVisibility, setActivePage }) => {
             className='logo'
           >
             <img src={wineIcon} alt='wine-glass' />
-            <h1 className='header-name-container'>
-              <div>OMUR</div>
-              <div>SURYANI</div>
-              <div>SARAP EVI</div>
-            </h1>
+            <h1 className='header-name-container'>Ömür Süryani Şarap Evi</h1>
           </a>
         </div>
 
@@ -126,13 +119,13 @@ const Header = ({ isMenuHidden, setMenuVisibility, setActivePage }) => {
           <div>
             {isMenuHidden ? (
               <a href='#'>
-                <img onClick={handleMenuToggle} src={menuIcon} alt='' />
+                <img onClick={handleMenuClick} src={menuIcon} alt='' />
               </a>
             ) : (
               <div id='navbar-container'>
-                <div onClick={handleMenuToggle} className='closing-left'></div>
+                <div onClick={handleMenuClick} className='closing-left'></div>
                 <div className='navbar'>
-                  <a className='closer' onClick={handleMenuToggle} href='#'>
+                  <a className='closer' onClick={handleMenuClick} href='#'>
                     <img src={closeIcon} alt='' />
                   </a>
                   {navlinks.map((link, index) => (
@@ -140,7 +133,7 @@ const Header = ({ isMenuHidden, setMenuVisibility, setActivePage }) => {
                       onClick={() => {
                         handleClick(link.id);
                         setActivePage(link.id);
-                        handleMenuToggle();
+                        handleMenuClick();
                       }}
                       key={link.id}
                       id={link.id}
